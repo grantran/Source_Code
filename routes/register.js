@@ -7,12 +7,12 @@ module.exports = (knex) => {
 
  router.post('/', (req, res) => {
   let validUsername = req.body;
-  console.log("USERNAME IS: " + req.body.username);
     knex('users')
-      .insert({username: req.body.username})
+      .insert({username: req.body.username}, 'id')
       .then((results) => {
-      res.json(results);
-    })
+          req.session.userid = results[0];
+          res.redirect("/");
+      })
 
   });
  return router;
