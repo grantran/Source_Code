@@ -45,17 +45,20 @@
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">User 1</a></li>
-            <li><a href="#">User 2</a></li>
-            <li><a href="#">User 3</a></li>
+            <form action="/login" method="post">
+              <label for="login">Login </label>
+              <input value="" type="username" name="username">
+              <input type="submit" value="submit">
+            </form>
           </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
             <ul class="dropdown-menu">
+
               <form action="/register" method="POST">
-                <input type="text" name="username" class="form-control" placeholder="Enter username here">
-                <button type="submit" value="submit" class="btn btn-default">Register</button>
+                <input type="text"  name="username" class="form-control" placeholder="Enter username here">
+                <button type="submit" class="btn btn-default">Register</button>
               </form>
             </ul>
           </li>
