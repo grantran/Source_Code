@@ -4,34 +4,36 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
-  router.post('/login', (req, res) => {
-    console.log(req.params.userid, "chris1");
-    console.log(user, "chris2");
-    console.log(users, "chris3")
-    function validUser(){
-    for(user in users){
-      if(users[user] === req.body.username) {
-      req.params.userid = user;
-      res.redirect('/');
-      return;
-    }
-    res.status(403).send('Error');
-    }
-  }
-    if(validUser()){
+  // router.get('/', (req, res) => {
+  //   const username = req.params.username;
+  //   res.render('index', username);
+  // })
+
+
+  router.post('/', (req, res) => {
+    // TODO Check why params.username is empty
+    const username = req.body.username;
+
     knex('users').where(
-      'username', req.params.userid
-    ).select('id').then(function(err, result) {
-      if (err) {
-        res.status(403).send("Error");
-      }
-      else {
-        res.json(results);
-      }
+      'username', username
+    ).select('id').then(function(results) {
+        // TODO You have to find how to get the user from the results
+        const user = results[0];
+
+        // console.log("result", result);
+        if(!user) {
+          res.status(403);
+          res.send('Email and Password cannot be empty.');
+          return
+        } else {
+          req.session.userid = user.id;
+          res.redirect("/");
+        }
+        //res.cookie() (if cookie is not stored)
+    }).catch( err => {
+      res.status(500).send("Error");
+      console.error("post to /", err);
     });
-    }
   });
-
+  return router;
 }
-
-

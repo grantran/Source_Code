@@ -53,9 +53,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <form>
-                <input type="text" class="form-control" placeholder="Enter username here">
-                <button type="submit" class="btn btn-default">Register</button>
+              <form action="/register" method="POST">
+                <input type="text" name="username" class="form-control" placeholder="Enter username here">
+                <button type="submit" value="submit" class="btn btn-default">Register</button>
               </form>
             </ul>
           </li>
