@@ -26,12 +26,12 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         users,
         knex('resources').insert([
-          {title: 'google', url: 'http://www.google.com', user_id: getId(users)},
-          {title: 'stack overflow', url: 'http://stackoverflow.com', user_id: getId(users)},
-          {title: 'git hub', url: 'http://github.com', user_id: getId(users)},
-          {title: 'knexjs', url: 'http://www.knexjs.org', user_id: getId(users)},
-          {title: 'bing', url: 'http://www.bing.com', user_id: getId(users)},
-          {title: 'reddit', url: 'http://reddit.com', user_id: getId(users)}
+          {title: 'google', url: 'http://www.google.com', user_id: getId(users), description: 'desc 1'},
+          {title: 'stack overflow', url: 'http://stackoverflow.com', user_id: getId(users), description: 'desc 2'},
+          {title: 'git hub', url: 'http://github.com', user_id: getId(users), description: 'desc 3'},
+          {title: 'knexjs', url: 'http://www.knexjs.org', user_id: getId(users), description: 'desc 4'},
+          {title: 'bing', url: 'http://www.bing.com', user_id: getId(users), description: 'desc 5'},
+          {title: 'reddit', url: 'http://reddit.com', user_id: getId(users), description: 'desc 6'}
         ], 'id')
       ]);
     })
