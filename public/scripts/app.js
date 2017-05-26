@@ -45,11 +45,11 @@ $(document).ready(function() {
     const html = `
        <article class="thumbnail">
             <div class="caption">
-              <h3>${escape(testArray)}</h3>
-              <p>${escape(resource.content.text)}</p>
-              <p> Posted by ${resource.user.name}</p>
+              <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
+              <p>caption</p>
+              <p> Posted by </p>
             </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
+            <a href="${escape(resource.url)}"><img src="http://placehold.it/350x150"></a>
             <div class = "footer">
               <p>TAG, TAG, TAG</p>
               <img href="" class="likeicon" src="/images/heart.png">
@@ -86,7 +86,7 @@ $(document).ready(function() {
   }
 
   // Renders the tweets via loop and adds them to the top of the page
-  function renderResource(resources) {
+  function renderResources(resources) {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
     for (var i = 0; i < resources.length; i++) {
