@@ -11,13 +11,7 @@ module.exports = (knex) => {
       .from("users")
       .then(function(results){
         res.json(results);
-      });
+    });
   });
   return router;
-
-};
-
-
-
-
-
+}
