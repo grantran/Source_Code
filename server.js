@@ -43,11 +43,11 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 // Mount all resource routes
 app.use("/register", register(knex));
-//app.use("/login", login);
-
+app.use("/login", login(knex));
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
 app.use("/api/comments", commentsRoutes(knex));
+
 
 // Home page
 app.get("/", (req, res) => {

@@ -5,6 +5,9 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.post('/login', (req, res) => {
+    console.log(req.params.userid, "chris1");
+    console.log(user, "chris2");
+    console.log(users, "chris3")
     function validUser(){
     for(user in users){
       if(users[user] === req.body.username) {
