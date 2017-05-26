@@ -16,5 +16,14 @@ module.exports = (knex) => {
     });
   });
 
+    router.get("/", (req, res) => {
+    knex('resources').select("*")
+    .from('resources')
+    .leftJoin('comments', 'resources.id', 'comments.resource_id')
+    // .leftJoin('likes', 'resources.id', 'likes.resource_id')
+    .then(function(results) {
+      res.json(results);
+    });
+  });
   return router;
 }
