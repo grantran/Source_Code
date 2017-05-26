@@ -15,11 +15,16 @@ $(() => {
     method: "GET",
     url: "/api/users"
   }).done((users) => {
+    users.forEach((user) => {
+      $("<div>").text(user.username).appendTo($("body"));
+
+  });
+
     console.log(users);
     users.forEach((user) => {
       $("<div>").text(user.username).appendTo($("body"));
     })
-  });;
+  });
 });
 
 
