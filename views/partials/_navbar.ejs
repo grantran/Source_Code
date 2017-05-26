@@ -7,34 +7,59 @@
     <header>
       <nav class="navbar">
        <div class="container-fluid">
-        <div class="navbar-header">
-          <img href="" class= "brand-logo left" src="/images/laptop-icon.png">
-        </div>
 
-        <div>
+
+        <span class="branding">
+          <img href="" class= "brand-logo" src="/images/laptop-icon.png">
           <h1 id="sitename"> Source Code </h1>
-        </div>
-
-        <div>
-          <button href="" type="button" class="btn btn-default navbar-btn">Login</button>
-          <button href="" type="button" class="btn btn-default navbar-btn">Register</button>
-        </div>
-
-        <div>
-          <img href="" id="addReasource" src="/images/plus.png">
-        </div>
+        </span>
+        <span>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+             <img href="" class ="addresource" src="/images/plus.png">
+             <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <form>
+                <h3>Create a Resource</h3>
+                <input type="text" class="form-control" placeholder="Enter title">
+                <input type="text" class="form-control" placeholder="Enter description">
+                 <input type="text" class="form-control" placeholder="Enter URL">
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="cancel" class="btn btn-default">Cancel</button>
+              </form>
+            </ul>
+          </li>
+        </span>
 
         <form class="navbar-form" role="search">
-          <div class="form-group">
+          <span class="form-group">
             <input type="text" class="form-control" placeholder="Search">
-          </div>
+          </span>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
 
-        <div>
+        <span class="profilelink">
           <img href="" id="profilePic" src="/images/profile.png">
+        </span>
+        <div>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">User 1</a></li>
+            <li><a href="#">User 2</a></li>
+            <li><a href="#">User 3</a></li>
+          </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <form>
+                <input type="text" class="form-control" placeholder="Enter username here">
+                <button type="submit" class="btn btn-default">Register</button>
+              </form>
+            </ul>
+          </li>
         </div>
-
        </div>
       </nav>
     </header>

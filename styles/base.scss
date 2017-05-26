@@ -1,1 +1,26 @@
 
+body{
+  padding-top: 10em;
+
+  .taglinks{
+    padding-left: 3em;
+    padding-bottom: 1em;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content{
+    display:none;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .likeicon{
+    float:right;
+    max-width: 1.5em;
+  }
+  .comment-box{
+    border: 1px solid #d3d3d3;
+  }
+}
