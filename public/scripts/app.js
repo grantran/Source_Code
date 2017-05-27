@@ -21,17 +21,35 @@ $(document).ready(function() {
       // data: {resourceid: $resourceid},
       // dataType: "json",
       success: function(results) {
-        $('.dropdown-menu').empty();
+        $('.comment-view').empty();
         results.forEach((item) => {
-          $('<div>').text(item.username + ': ' + item.comment).appendTo($('.dropdown-menu'));
+          $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
         });
       }
     })
     });
   }
 
+  function postComments() {
+    $(".resourceWall").on('click', ".comment-post", function(event) {
+      // console.log(event);
+      var resourceid = $(this).attr('data-resourceid');
+      // console.log($resourceid);
+    $.ajax({
+      url: '/api/comments',
+      method: 'POST',
+      success: function(results) {
+        res.end();
+      }
+    })
+    });
+  }
+
+
+
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
+    let rdi = "${resource.id}";
     const html = `
        <article class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
@@ -44,17 +62,17 @@ $(document).ready(function() {
               <p>TAG, TAG, TAG</p>
               <img href="" class="likeicon" src="/images/heart.png">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Post a comment<span class="caret"></span></a>
-                <div class="dropdown-menu">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
+                <div class="dropdown-menu comment-post">
                   <form action="/api/comments" method="POST" data-resourceid="${resource.id}">
                     <textarea name="text" placeholder="What do you think?"></textarea>
-                    <input type="Submit">
+                    <input type="Submit" name="${resource.id}">
                   </form>
                 </div>
               </li>
               <li class="dropdown">
                 <a href="#"  class="dropdown-toggle btn btn-default comment"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-resourceid="${resource.id}">View comments<span class="caret"></span></a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu comment-view">
                 </ul>
               </li>
             </article>
@@ -63,18 +81,21 @@ $(document).ready(function() {
   }
 
   // Renders the tweets via loop and adds them to the top of the page
-  function renderResources(resources) {
+  function renderResources (data) {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
-    for (var i = 0; i < resources.length; i++) {
-      var resource = resources[i];r
-    }
-      $.get("/getOgs", function(data){
-        var seeds = (data)
-        seeds.forEach(function(resource){
-        resourceContainer.prepend(createResourceElement(resource));
-      });
-     })
+
+    data.forEach(function(item) {
+      resourceContainer.prepend(createResourceElement(item));
+    })
+
+    // for (var i = 0; i < resources.length; i++) {
+    //   var resource = resources[i];
+    // }
+        // seeds.forEach(function(resource){
+        // resourceContainer.prepend(createResourceElement(resource));
+      // });
+     
   }
 
 
@@ -100,13 +121,12 @@ $(document).ready(function() {
       data: data,
       success: function(data) {
         loadResources();
-
-
       }
     });
   }
 
   loadResources();
+  // renderResources();
 
 });
 
