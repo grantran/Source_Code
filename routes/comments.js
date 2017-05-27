@@ -5,13 +5,14 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("comments")
-      .then((results) => {
-        res.json(results);
-    });
+  router.post("/", (req, res) => {
+    knex('comments').insert({
+      comment: req.body.comment, 
+      user_id: req.session.userid,
+      resource_id: RESOURCEID
+    }).then(() => {
+      res.end();
+    })
   });
 
   return router;
