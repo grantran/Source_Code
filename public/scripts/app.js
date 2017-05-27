@@ -10,61 +10,6 @@ $(document).ready(function() {
     return div.innerHTML;
   }
 
-function getImageFromURL(resource){
-
-
-
-  $.get("https://cors-anywhere.herokuapp.com/" + escape(resource.url), function(data) {
-    // var meta = $(data).filter('meta[name="og:image"]').attr("content");
-    // console.log(meta)
-
-    // var logo = $(data).filter('img[id="logo"]').attr("src");
-    // var ogImage = $(data).filter('meta[property="og:image"]').attr("content");
-    // var twitterImage = $(data).filter('meta[name="twitter:image"]').attr("content");
-    // var schemaImage = $(data).filter('[itemprop="image"]').attr("src");
-
-
-    // var imageURL = ogImage || twitterImage || schemaImage || "http://placehold.it/400x400"
-
-    var imageURL = resource.url + "/" + $(data).filter("link[rel=apple-touch-icon]").attr('href');
-
-
-    $(`#resource-${resource.id}`).find(".resourceImage").attr("src", imageURL);
-    console.log("resource.url" + resource.url + "imageURL   " +  imageURL);
-
-
-
-});
-
-  // function proxify( request ) {
-  //   request.url = "http://www.inertie.org/ba-simple-proxy.php?mode=native&url=" + encodeURIComponent( request.url );
-  //   return request;
-  // }
-
-  //   // Create an instance of ImageResolver
-  //   // The proxy function is passed as an option
-
-
-  // var resolver = new ImageResolver( { requestPlugin : proxify } );
-  //   resolver.register(new ImageResolver.Opengraph());
-  //   resolver.register(new ImageResolver.FileExtension());
-  //   resolver.register(new ImageResolver.NineGag());
-  //   resolver.register(new ImageResolver.Instagram());
-  //   resolver.register(new ImageResolver.ImgurPage());
-
-  //   resolver.register(new ImageResolver.MimeType());
-  //   resolver.register(new ImageResolver.Flickr( '6a4f9b6d16c0eaced089c91a2e7e87ad' ));
-
-  //   resolver.register(new ImageResolver.Webpage());
-
-  // resolver.resolve(url, function(result){
-  //   if (result) {
-  //       console.log(result.image);
-  //   } else {
-  //       console.log( "No image found" );
-  //   }
-// });
-}
   function getComments() {
     $(".resourceWall").on('click', ".comment", function(event) {
       // console.log(event);
