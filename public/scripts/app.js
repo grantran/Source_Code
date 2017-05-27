@@ -92,12 +92,28 @@ function getImageFromURL(resource){
   //   }
 // });
 }
-
+  function getComments() {
+    $(".resourceWall").on('click', ".comment", function(event) {
+      // console.log(event);
+      var resourceid = $(this).attr('data-resourceid');
+      // console.log($resourceid);
+    $.ajax({
+      url: '/api/comments?id=' + resourceid,
+      method: 'GET',
+      // data: {resourceid: $resourceid},
+      // dataType: "json",
+      success: function(results) {
+        console.log(results);
+        // console.log(results.data);
+      }
+    })
+    });
+  }
 
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
     const html = `
-       <article class="thumbnail" id="resource-${resource.id}">
+       <article class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>caption</p>
@@ -108,7 +124,7 @@ function getImageFromURL(resource){
               <p>TAG, TAG, TAG</p>
               <img href="" class="likeicon" src="/images/heart.png">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle btn btn-default" onclick="this.data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
                 <div class="dropdown-menu">
                   <h3> Write a Comment</h3>
                   <form>
@@ -118,7 +134,7 @@ function getImageFromURL(resource){
                 </div>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View comments<span class="caret"></span></a>
+                <a href="#"  class="dropdown-toggle btn btn-default comment"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-resourceid="${resource.id}">View comments<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <div class="comment-box">
                     <p> username 1 </p>
@@ -145,6 +161,7 @@ function getImageFromURL(resource){
     resourceContainer.empty();
     for (var i = 0; i < resources.length; i++) {
       var resource = resources[i];
+      // console.log(resources[i]);
       resourceContainer.prepend(createResourceElement(resource));
       getImageFromURL(resource);
     }
@@ -158,7 +175,9 @@ function getImageFromURL(resource){
       url: '/api/resources',
       method: 'GET',
       success: function(data) {
+        // console.log(data);
         renderResources(data);
+        getComments();
       }
     });
   }
@@ -172,12 +191,12 @@ function getImageFromURL(resource){
       success: function(data) {
         loadResources();
 
+
       }
     });
   }
 
   loadResources();
-
 
 });
 

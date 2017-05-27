@@ -12,8 +12,15 @@ module.exports = (knex) => {
       resource_id: RESOURCEID
     }).then(() => {
       res.end();
-    })
+    });
   });
 
+  router.get("/", (req, res) => {
+    knex('comments').select("*")
+    .where({'resource_id': req.query.id})
+    .then((results) => {
+    res.json(results);
+    });
+  })
   return router;
 }

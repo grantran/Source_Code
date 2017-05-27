@@ -19,10 +19,11 @@ module.exports = (knex) => {
 
     router.get("/", (req, res) => {
     knex('resources').select("*")
-    .from('resources')
-    .leftJoin('comments', 'resources.id', 'comments.resource_id')
+    // .from('resources')
+    // .leftJoin('comments', 'resources.id', 'comments.resource_id')
     // .leftJoin('likes', 'resources.id', 'likes.resource_id')
     .then(function(results) {
+      // console.log(results);
       res.json(results);
     });
   });
