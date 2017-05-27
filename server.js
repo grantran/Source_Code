@@ -14,7 +14,8 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
 const request = require('request');
-const ogs = require('open-graph-scraper')
+const ogs = require('open-graph-scraper');
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const register    = require("./routes/register");
@@ -22,6 +23,7 @@ const login       = require("./routes/login");
 const resourcesRoutes = require("./routes/resources");
 const commentsRoutes = require("./routes/comments");
 const likebutton  = require("./routes/likebutton")
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -30,10 +32,8 @@ app.use(cookieSession({
   name: 'session',
   keys: ['1q2w3e4r5t6y', 'qawsedrftgyh']
 }));
-
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
-app.use(flash());
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -44,7 +44,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-// Mount all resource routes
+
 app.use("/register", register(knex));
 app.use("/login", login(knex));
 app.use("/api/users", usersRoutes(knex));
@@ -61,7 +61,6 @@ app.post("/logout", (req, res) => {
   req.session = null;
   res.redirect('/');
 });
-
 
 var newSeeds = [
   {
@@ -122,9 +121,7 @@ app.get('/getOgs', (req, res) =>{
           JSON.stringify(imageData);
           res.json(imageData);
       }
-
     })
-
   })
 })
 
@@ -144,8 +141,6 @@ app.get('/getJSON', (req, res) => {
     });
   });
 });
-
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
