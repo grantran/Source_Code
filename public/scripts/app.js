@@ -103,8 +103,10 @@ function getImageFromURL(resource){
       // data: {resourceid: $resourceid},
       // dataType: "json",
       success: function(results) {
-        console.log(results);
-        // console.log(results.data);
+        $('.dropdown-menu').empty();
+        results.forEach((item) => {
+          $('<div>').text(item.username + ': ' + item.comment).appendTo($('.dropdown-menu'));
+        });
       }
     })
     });
@@ -124,10 +126,9 @@ function getImageFromURL(resource){
               <p>TAG, TAG, TAG</p>
               <img href="" class="likeicon" src="/images/heart.png">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" onclick="this.data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Post a comment<span class="caret"></span></a>
                 <div class="dropdown-menu">
-                  <h3> Write a Comment</h3>
-                  <form>
+                  <form action="/api/comments" method="POST" data-resourceid="${resource.id}">
                     <textarea name="text" placeholder="What do you think?"></textarea>
                     <input type="Submit">
                   </form>
@@ -136,18 +137,6 @@ function getImageFromURL(resource){
               <li class="dropdown">
                 <a href="#"  class="dropdown-toggle btn btn-default comment"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-resourceid="${resource.id}">View comments<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <div class="comment-box">
-                    <p> username 1 </p>
-                    <p> This is a comment.</p>
-                  </div>
-                  <div>
-                    <p> username 2</p>
-                    <p> This is also a comment.</p>
-                  </div>
-                  <div>
-                    <p> username 2</p>
-                    <p> Another comment</p>
-                  </div>
                 </ul>
               </li>
             </article>
