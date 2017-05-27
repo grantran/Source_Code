@@ -19,11 +19,11 @@
              <img href="" class ="addresource" src="/images/plus.png">
              <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <form action="/api/resources" method="post">
+              <form action="/api/resources" method="POST">
                 <h3>Create a Resource</h3>
-                <input type="text" class="form-control" placeholder="Enter title">
-                <input type="text" class="form-control" placeholder="Enter description">
-                 <input type="text" class="form-control" placeholder="Enter URL">
+                <input type="text" class="form-control" name="title" placeholder="Enter title">
+                <input type="text" class="form-control" name="description" placeholder="Enter description">
+                 <input type="text" class="form-control" name = "url" placeholder="Enter URL">
                 <button type="submit" class="btn btn-default">Submit</button>
                 <button type="cancel" class="btn btn-default">Cancel</button>
               </form>
@@ -37,7 +37,6 @@
           </span>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-
         <span class="profilelink">
           <img href="" id="profilePic" src="/images/profile.png">
         </span>
