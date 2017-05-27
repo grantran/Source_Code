@@ -13,7 +13,8 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
-const flash = require('connect-flash');
+const request = require('request');
+const ogs = require('open-graph-scraper')
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const register    = require("./routes/register");
@@ -61,6 +62,92 @@ app.post("/logout", (req, res) => {
   res.redirect('/');
 });
 
+
+var newSeeds = [
+  {
+    id: 1,
+    url: 'https://github.com/sindresorhus/gulp-autoprefixer'
+  }, {
+    id: 2,
+    url: 'https://www.vagrantup.com/intro/getting-started/up.html'
+  }, {
+    id: 3,
+    url: 'https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code/'
+  }, {
+    id: 4,
+    url: 'http://youmightnotneedjquery.com/'
+  }, {
+    id: 5,
+    url: 'https://stackoverflow.com/questions/7410063/how-can-i-listen-to-the-form-submit-event-in-javascript'
+  }, {
+    id: 6,
+    url: 'https://vim-adventures.com'
+  }, {
+    id: 7,
+    url: 'http://www.uxbooth.com/articles/the-new-rules-of-form-design/'
+  }, {
+    id: 8,
+    url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes'
+  }, {
+    id: 9,
+    url: 'https://colorlib.com/wp/free-flat-social-media-icons-sets/'
+  }, {
+    id: 10,
+    url: 'https://osvaldas.info/image-lightbox-responsive-touch-friendly'
+  }
+];
+
+app.get('/getOgs', (req, res) =>{
+  const imageData = []
+  newSeeds.forEach(function (resource, id) {
+
+    ogs({url: resource.url}, function(err, results){
+      var image = results.data.ogImage
+      if(image){
+        image = image.url
+      }else{
+        image = "http://placehold.it/400x400"
+      }
+      imageData.push({
+
+        id: resource.id,
+        title: results.data.ogTitle,
+        description: results.data.ogDescription,
+        imageURL: image,
+        url: resource.url
+      })
+      console.log(results.data)
+
+        if (imageData.length === newSeeds.length) {
+          JSON.stringify(imageData);
+          res.json(imageData);
+      }
+
+    })
+
+  })
+})
+
+app.get('/getJSON', (req, res) => {
+  const JSONseeds = [];
+  newSeeds.forEach(function (resource, id) {
+    request.get(resource.url, function (err, response, body) {
+      let result = {
+        id: resource.id,
+        body: body
+      };
+      JSONseeds.push(result);
+      if (JSONseeds.length === newSeeds.length) {
+        JSON.stringify(JSONseeds);
+        res.send(JSONseeds);
+      }
+    });
+  });
+});
+
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
