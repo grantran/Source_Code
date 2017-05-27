@@ -1,31 +1,4 @@
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/comments/"
-//   }).done((comments) => {
-//     console.log(comments);
-//     comments.forEach((comments) => {
-//       $("<div>").text(comments.comment).appendTo($("body"));
-//     })
-//   });;
-// });
 
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/users"
-//   }).done((users) => {
-//     users.forEach((user) => {
-//       $("<div>").text(user.username).appendTo($("body"));
-
-//   });
-
-//     console.log(users);
-//     users.forEach((user) => {
-//       $("<div>").text(user.username).appendTo($("body"));
-//     })
-//   });
-// });
 
 $(document).ready(function() {
   var resourceContainer = $('#resources');
@@ -118,10 +91,10 @@ function getImageFromURL(resource){
        <article class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
-              <p>caption</p>
+              <p>${escape(resource.description)}</p>
               <p> Posted by </p>
             </div>
-            <a href="${escape(resource.url)}"><img class="resourceImage" src=""></a>
+            <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.imageURL}"></a>
             <div class = "footer">
               <p>TAG, TAG, TAG</p>
               <img href="" class="likeicon" src="/images/heart.png">
@@ -149,11 +122,14 @@ function getImageFromURL(resource){
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
     for (var i = 0; i < resources.length; i++) {
-      var resource = resources[i];
-      // console.log(resources[i]);
-      resourceContainer.prepend(createResourceElement(resource));
-      getImageFromURL(resource);
+      var resource = resources[i];r
     }
+      $.get("/getOgs", function(data){
+        var seeds = (data)
+        seeds.forEach(function(resource){
+        resourceContainer.prepend(createResourceElement(resource));
+      });
+     })
   }
 
 
