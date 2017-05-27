@@ -67,7 +67,7 @@ $(document).ready(function() {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
     for (var i = 0; i < resources.length; i++) {
-      var resource = resources[i];r
+      var resource = resources[i];
     }
       $.get("/getOgs", function(data){
         var seeds = (data)
