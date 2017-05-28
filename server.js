@@ -22,7 +22,7 @@ const register    = require("./routes/register");
 const login       = require("./routes/login");
 const resourcesRoutes = require("./routes/resources");
 const commentsRoutes = require("./routes/comments");
-//const likebutton  = require("./routes/likebutton")
+const likebutton  = require("./routes/likebutton")
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -51,7 +51,7 @@ app.use("/login", login(knex));
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
 app.use("/api/comments", commentsRoutes(knex));
-//app.use("/likebutton", likebutton(knex));
+app.use("/api/likebutton", likebutton(knex));
 
 // Home page
 app.get("/", (req, res) => {

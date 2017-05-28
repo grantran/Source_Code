@@ -12,14 +12,10 @@ $(document).ready(function() {
 
   function getComments() {
     $(".resourceWall").on('click', ".comment", function(event) {
-      // console.log(event);
       var resourceid = $(this).attr('data-resourceid');
-      // console.log($resourceid);
     $.ajax({
       url: '/api/comments?id=' + resourceid,
       method: 'GET',
-      // data: {resourceid: $resourceid},
-      // dataType: "json",
       success: function(results) {
         $('.comment-view').empty();
         results.forEach((item) => {
@@ -45,6 +41,20 @@ $(document).ready(function() {
     });
   }
 
+  function likesPost() {
+    $(".resourceWall").on('click', ".likeicon", function(event) {
+      console.log(event);
+      var resourceid = $(this).attr('data-resourceid');
+      console.log(resourceid);
+    $.ajax({
+      url: '/api/likebutton/' + resourceid,
+      method: 'POST',
+      success: function(results) {
+        res.end();
+      }
+    })
+    });
+  }
 
 
   // creates elements on the page for each tweet
@@ -55,12 +65,12 @@ $(document).ready(function() {
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
-              <p> Posted by </p>
+              <p> Posted by ${resource.username}</p>
             </div>
             <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.imageURL}"></a>
             <div class = "footer">
               <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
+              <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
                 <div class="dropdown-menu comment-post">
@@ -86,6 +96,7 @@ $(document).ready(function() {
     resourceContainer.empty();
 
     data.forEach(function(item) {
+      console.log(item);
       resourceContainer.prepend(createResourceElement(item));
     })
 
@@ -109,6 +120,7 @@ $(document).ready(function() {
         // console.log(data);
         renderResources(data);
         getComments();
+        likesPost();
       }
     });
   }
