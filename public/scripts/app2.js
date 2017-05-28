@@ -109,7 +109,7 @@ $(document).ready(function() {
   // loads the tweets via ajax on success calls on the renderTweets function
   function loadResources() {
     $.ajax({
-      url: '/api/resources',
+      url: '/api/profiles',
       method: 'GET',
       success: function(data) {
         // console.log(data);
