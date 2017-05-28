@@ -6,12 +6,12 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.post("/", (req, res) => {
+    console.log(req);
     knex('comments').insert({
       comment: req.body.text, 
       user_id: req.session.userid,
-      resource_id: req.data
+      resource_id: Object.keys(req.body)[0]
     }).then(() => {
-      console.log(req);
       res.redirect("/");
     });
   });
