@@ -18,7 +18,7 @@ module.exports = (knex) => {
     });
   });
 
-    router.get("/", (req, res) => {
+  router.get("/", (req, res) => {
     knex('resources').select("*")
     .leftJoin('users', 'resources.user_id', 'users.id')
     .then(function(results) {
@@ -26,15 +26,15 @@ module.exports = (knex) => {
     });
   });
 
-  router.get("/:user", (req, res) => {
-    knex('resources').select("*")
-    .leftJoin('users', 'resources.user_id', 'users.id')
-    .leftJoin('likes', 'users.id', 'likes.user_id')
-    .where('resources.user_id' = req.session.userid)
-    .orWhere('likes.user_id' = req.session.userid)
-    .then(function(results) {
-      res.json(results);
-    });
-  });
+  // router.get("/:user", (req, res) => {
+  //   knex('resources').select("*")
+  //   .leftJoin('users', 'resources.user_id', 'users.id')
+  //   .leftJoin('likes', 'users.id', 'likes.user_id')
+  //   .where({'resources.user_id': req.session.userid})
+  //   .orWhere({'likes.user_id': req.session.userid})
+  //   .then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
   return router;
 }
