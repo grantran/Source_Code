@@ -8,10 +8,11 @@ module.exports = (knex) => {
   router.post("/", (req, res) => {
     console.log(req.body);
     knex('resources').insert({
-      title: req.body.title, 
+      title: req.body.title,
       url: req.body.url,
-      description: req.body.description, 
-      user_id: req.session.userid
+      description: req.body.description,
+      user_id: req.session.userid,
+      tags: req.body.tags
     }).then(() => {
       res.redirect("/");
     });
