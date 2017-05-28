@@ -99,7 +99,7 @@ $(document).ready(function() {
 
     data.forEach(function(item) {
       console.log(item);
-      resourceContainer.prepend(createResourceElement(item));
+      resourceContainer.append(createResourceElement(item));
     })
 
     // for (var i = 0; i < resources.length; i++) {
