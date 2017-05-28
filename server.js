@@ -55,10 +55,13 @@ app.use("/api/likebutton", likebutton(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  knex('users').select("*").
-  then(function(results) {
+  // let userData; 
+  // knex('users').select("*").then((results => {
+    // userData = results;
+    // let cookieInfo = req.session.userid;
     res.render("index");
-  })
+  // }))
+  
 });
 
 app.get("/profile", (req, res) =>{
