@@ -12,7 +12,9 @@ module.exports = (knex) => {
       url: req.body.url,
       description: req.body.description,
       user_id: req.session.userid,
-      tags: req.body.tags
+      tags: req.body.tags,
+      image: req.body.image
+
     }).then(() => {
       res.redirect("/");
     });
