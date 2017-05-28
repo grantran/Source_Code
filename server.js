@@ -14,6 +14,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
 
+
 const request = require('request');
 const ogs = require('open-graph-scraper')
 // Seperated Routes for each Resource

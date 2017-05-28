@@ -8,6 +8,8 @@
     <script defer type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script defer src="vendor/ImageResolver.0.5.2.js" type="text/javascript"></script>
+    <script  defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+
     <script defer type="text/javascript" src="/scripts/app.js"></script>
     <script defer src="/scripts/embedyoutube.js" type="text/javascript"></script>
 
@@ -20,10 +22,10 @@
 
     <%- include partials/_navbar.ejs %>
 
-    <div class="container resourceWall">
-      <div class="row">
-         <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
+    <div class="container resourceWall grid">
+      <div class="row resourceRow">
+         <div class="col-sm-6 col-md-4 resourceColum">
+           <div class="thumbnail grid-item">
             <div class="caption">
               <h3>TITLE</h3>
               <p>Description - blah blah blah</p>

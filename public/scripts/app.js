@@ -62,19 +62,40 @@ $(document).ready(function() {
     return $(html);
   }
 
+
+     var grid = $('.grid').masonry({
+        columnWidth: 200,
+         itemSelector: '.grid-item'
+        });
+
   // Renders the tweets via loop and adds them to the top of the page
   function renderResources(resources) {
-    var resourceContainer = $(".resourceWall");
-    resourceContainer.empty();
-    for (var i = 0; i < resources.length; i++) {
-      var resource = resources[i];
-    }
-      $.get("/getOgs", function(data){
-        var seeds = (data)
-        seeds.forEach(function(resource){
-        resourceContainer.prepend(createResourceElement(resource));
-      });
-     })
+    $('.prependButton').on( 'click', function() {
+    // create new item elements
+      var $items = $(createResourceElement(resource));
+    // prepend items to grid
+      $grid.prepend( $items )
+      // add and lay out newly prepended items
+      .masonry( 'prepended', $items );
+    });
+
+
+    // var resourceContainer = $(".resourceContainer");
+     // var resourceRow = $(".resourceRow");
+
+    // resourceContainer.empty();
+
+    // resourceRow.empty();
+    // for (var i = 0; i < resources.length; i++) {
+    //   var resource = resources[i];
+    // }
+
+     //  $.get("/getOgs", function(data){
+     //    var seeds = (data)
+     //    seeds.forEach(function(resource){
+     //    resourceContainer.prepend(createResourceElement(resource));
+     //  });
+     // })
   }
 
 
