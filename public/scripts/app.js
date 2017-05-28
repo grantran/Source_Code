@@ -95,6 +95,8 @@ $(document).ready(function() {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
 
+
+
     data.forEach(function(item) {
       console.log(item);
       resourceContainer.prepend(createResourceElement(item));
@@ -106,7 +108,8 @@ $(document).ready(function() {
         // seeds.forEach(function(resource){
         // resourceContainer.prepend(createResourceElement(resource));
       // });
-     
+
+
   }
 
 
