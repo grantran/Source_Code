@@ -5,6 +5,9 @@ exports.up = function(knex, Promise) {
       table.increments().unsigned().primary();
       table.string('title').notNull();
       table.string('url').notNull();
+      table.string('description');
+      table.string('image');
+      table.string('tags');
       table.integer('user_id');
       table.timestamps(true, true);
     }),
@@ -34,10 +37,11 @@ exports.up = function(knex, Promise) {
       table.integer('resource_id');
       table.timestamps(true, true);
     }),
-    knex.schema.table('users', (table) => {
-      table.renameColumn('name', 'username');
+    knex.schema.createTable('users', (table) => {
+      table.increments().unsigned().primary();
+      table.string('username').notNull();
       table.timestamps(true, true);
-    }) 
+    })
   ])
 };
 
@@ -48,10 +52,6 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('tags'),
     knex.schema.dropTable('comments'),
     knex.schema.dropTable('likes'),
-    knex.schema.table('users', (table) => {
-      table.renameColumn('username', 'name');
-      table.dropColumn('created_at');
-      table.dropColumn('updated_at');
-    })
+    knex.schema.dropTable('users')
   ])
 };
