@@ -120,7 +120,7 @@ $(document).ready(function() {
       url: '/api/resources',
       method: 'GET',
       success: function(data) {
-        // console.log(data);
+        // console.log(data, 'this comes second');
         renderResources(data);
         getComments();
         likesPost();

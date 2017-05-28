@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+  <script type = "text/javascript"> 
+    var userData = <%- JSON.parse(userData) %>
+  </script> 
 </head>
   <body>
     <header>
@@ -47,11 +49,8 @@
         </span>
         <div>
          <li class="dropdown">
-          <!--<% if (!cookieInfo) { %>-->
+            <% if (!userData) { %>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
-          <!--<% } else { %>-->
-            <!--<span>Logged in </span>-->
-          <!--<% } %>-->
           <ul class="dropdown-menu">
             <form action="/login" method="post">
               <label for="login"> </label>
@@ -70,6 +69,9 @@
               </form>
             </ul>
           </li>
+          <% } else { %>
+            <span>Logged in as  <%- userData  %> </span>
+            <% } %>
         </div>
        </div>
       </nav>
