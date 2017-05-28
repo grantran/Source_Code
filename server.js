@@ -55,7 +55,10 @@ app.use("/api/likebutton", likebutton(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  knex('users').select("*").
+  then(function(results) {
+    res.render("index");
+  })
 });
 
 app.get("/profile", (req, res) =>{
