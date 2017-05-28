@@ -61,6 +61,10 @@ app.get("/", (req, res) => {
   })
 });
 
+app.get("/profile", (req, res) =>{
+  res.render("profile");
+})
+
 app.post("/logout", (req, res) => {
   req.session = null;
   res.redirect('/');
