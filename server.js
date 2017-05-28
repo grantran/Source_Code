@@ -55,21 +55,21 @@ app.use("/api/likebutton", likebutton(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  let userData; 
+  let userData = {}; 
   knex('users').select("*").then((results) => {
-    console.log(req.session.userid);
+    // console.log(req.session.userid);
     results.some(function(item) {
-      console.log(item.id);
+      // console.log(item.id);
       if (item.id === req.session.userid) {
         userData = item; 
         return true;
       } else {
-        console.log('this ran');
-        userData = null;
+        // console.log('this ran');
+        userData = 'noUser';
       }
     })
-    console.log(userData);
-    res.render("index", {userData: JSON.stringify(userData)})
+    // console.log(JSON.stringify(userData));
+    res.render("index", {userData: userData})
   })
   
 });
