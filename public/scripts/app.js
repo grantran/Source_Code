@@ -101,10 +101,10 @@ function createCommentElement(comments) {
     let rdi = "${resource.id}";
     const html = `
 
-       <article class="thumbnail" data="resource-${resource.id}" style="border: 0px">
+       <article class="thumbnail" data="resource-${resource.id}" style="border: 0px; display=none">
 
        <div class="col-lg-3 col-md-4 thumb">
-       <article class="thumbnail" data="resource-${resource.id}" id=${resource.id}>
+       <article class="article thumbnail" data="resource-${resource.id}" id=${resource.id}>
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>

@@ -10,18 +10,19 @@ body{
   .tagholder {
     padding-left: 16em;
     padding-bottom: 3em;
+    font-size: 15px;
 
 
   }
 
   .postComment{
     .commentTextArea{
-      width:50em;
+      width:20em;
     }
   }
 
 .comment-view{
-  width: 50em;
+  width: 20em;
 
   .commentBlock{
     padding: 1em;
@@ -45,6 +46,7 @@ body{
   }
 
    .userNameComment{
+     font-weight: bold;
 
     }
 
