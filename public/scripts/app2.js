@@ -84,7 +84,7 @@ $(document).ready(function() {
     let rdi = "${resource.id}";
     const html = `
 
-       <artcle class="thumbnail" data="resource-${resource.id}">
+       <artcle class="thumbnail" data="resource-${resource.id}" style="border: 0px">
 
        <div class="col-lg-3 col-md-4 thumb">
        <article class="thumbnail" data="resource-${resource.id}" id=${resource.id}>

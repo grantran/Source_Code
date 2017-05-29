@@ -101,7 +101,7 @@ function createCommentElement(comments) {
     let rdi = "${resource.id}";
     const html = `
 
-       <article class="thumbnail" data="resource-${resource.id}">
+       <article class="thumbnail" data="resource-${resource.id}" style="border: 0px">
 
        <div class="col-lg-3 col-md-4 thumb">
        <article class="thumbnail" data="resource-${resource.id}" id=${resource.id}>
@@ -113,7 +113,6 @@ function createCommentElement(comments) {
             <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.image}"></a>
             <div class = "footer">
               <p>${escape(resource.tags)}</p>
-              <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}" name="${resource.id}">
               <p class="thetags">#${escape(resource.tags)}</p>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
