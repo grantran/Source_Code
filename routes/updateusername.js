@@ -3,10 +3,10 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
+//Route is not used 
 
+module.exports = (knex) => {
   router.post("/", (req, res) => {
-    console.log('in route');
     knex('users').select("*")
     .where({'id': req.session.userid})
     .update({

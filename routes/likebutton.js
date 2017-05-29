@@ -4,9 +4,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
-
   router.post("/:resourceid", (req, res) => {
-    // console.log(req);
     knex('likes').insert({
       likes: true,
       user_id: req.session.userid,
@@ -15,5 +13,6 @@ module.exports = (knex) => {
       res.json(results);
     });
   });
+  
   return router;
 }

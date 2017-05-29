@@ -10,7 +10,6 @@ module.exports = (knex) => {
     .leftJoin('likes', 'resources.id', 'likes.resource_id')
     .where({'users.id': req.session.userid})
     .then(function(data) {
-      console.log(data, 'before i send');
       res.json(data);
     });
   });
