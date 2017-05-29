@@ -20,8 +20,8 @@
              <img href="" class ="addresource" src="/images/plus.png">
              <span class="caret"></span></a>
               <% if (userData === false ) { %>
-                <ul class="dropdown-menu">
-                <span> Please login </span>
+                <ul class="dropdown-menu" style="color:black">
+                <span> Please login to post a resource   </span>
                 </ul>
               <% } else { %>
               <ul class="dropdown-menu">
@@ -47,7 +47,11 @@
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <span  class="profilelink">
+         <% if (userData === false ) { %>
+         
+         <% } else { %>
         <a href="../profile">
+         <% } %>
           <img  id="profilePic" src="/images/profile.png">
           </a>
         </span>
@@ -60,9 +64,9 @@
             <ul class="dropdown-menu">
 
 
-            <form action="/login" method="post">
+            <form style="color:black" action="/login" method="post">
               <label for="login"> </label>
-              <input value="" type="username" name="username">
+              <input value="" type="username" name="username" placeholder="Username">
               <input type="submit" value="submit">
             </form>
           </ul>
@@ -78,7 +82,7 @@
             </ul>
           </li>
           <% } else { %>
-            <span>Logged in as <%= userData.username %> <form method="POST" action="/logout"> <input type="submit" value="LOGOUT"></span>
+            <span>Logged in as <%= userData.username %> <form style="color:black" method="POST" action="/logout"> <input type="submit" value="LOGOUT"></span>
            <% } %>
         </div>
        </div>

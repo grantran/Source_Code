@@ -37,6 +37,20 @@ $(document).ready(function() {
     });
   }
 
+  function updateUser() {
+    $(".updateUser").on('click', function(event) {
+      event.preventDefault();
+      console.log('in ajax');
+    $.ajax({
+      url: '/api/updateuser',
+      method: 'POST',
+      success: function(results) {
+        res.end();
+      }
+    })
+    });
+  }
+
   function likesPost() {
     $(".resourceWall").on('click', ".likeicon", function(event) {
       // console.log(event);
@@ -57,6 +71,10 @@ $(document).ready(function() {
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
+
+    <br></br>
+    <br></br>
+    <br></br>
        <article class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
@@ -111,12 +129,14 @@ $(document).ready(function() {
         renderResources(data);
         getComments();
         likesPost();
+        updateUser();
       }
     });
   }
 
   loadYourResources();
   // renderResources();
+  updateUser();
 
 });
 
