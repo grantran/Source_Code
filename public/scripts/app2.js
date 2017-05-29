@@ -51,27 +51,30 @@ $(document).ready(function() {
     });
   }
 
-  function likesPost() {
-    $(".resourceWall").on('click', ".likeicon", function(event) {
-      // console.log(event);
+  function likesPost(){
+  $(".resourceWall").on('click', '.like-review', function(event) {
+    $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
+    $(this).children('.fa-heart').addClass('animate-like');
+
       var resourceid = $(this).attr('data-resourceid');
-      // console.log(resourceid);
+
+      console.log(resourceid);
+
     $.ajax({
       url: '/api/likebutton/' + resourceid,
       method: 'POST',
       success: function(results) {
-        res.end();
       }
-    })
     });
-  }
+  });
+  };
 
 
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
-       <div class="thumbnail" data="resource-${resource.id}">
+       <div class="article thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
@@ -79,8 +82,7 @@ $(document).ready(function() {
             </div>
             <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.image}"></a>
             <div class = "footer">
-              <p>${escape(resource.tags)}</p>
-              <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}">
+              <p class="thetags">#${escape(resource.tags)}</p>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
                 <div class="dropdown-menu comment-post">
@@ -95,7 +97,13 @@ $(document).ready(function() {
                 <ul class="dropdown-menu comment-view">
                 </ul>
               </li>
-            </article>
+              <span class="like-content">
+                  <button class="btn-secondary like-review" data-resourceid="${resource.id}">
+                    <i class="fa fa-heart" aria-hidden="true"></i> Like
+                  </button>
+                </span>
+            </div>
+          </article>
       `;
     return $(html);
   }
@@ -107,7 +115,7 @@ $(document).ready(function() {
     data.forEach(function(item) {
       resourceContainer.prepend(createResourceElement(item));
     })
-     
+
   }
 
 

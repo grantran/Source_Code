@@ -17,9 +17,11 @@ $(document).ready(function() {
       url: '/api/comments?id=' + resourceid,
       method: 'GET',
       success: function(results) {
+        var commentContainer = $('.comment-view');
         $('.comment-view').empty();
         results.forEach((item) => {
-          $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
+          commentContainer.prepend(createCommentElement(item));
+          // $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
         });
       }
     })
@@ -41,43 +43,55 @@ $(document).ready(function() {
     });
   }
 
-  function likesPost() {
-    $(".resourceWall").on('click', ".likeicon", function(event) {
-      // console.log(event);
+function likesPost(){
+  $(".resourceWall").on('click', '.like-review', function(event) {
+    $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
+    $(this).children('.fa-heart').addClass('animate-like');
+
       var resourceid = $(this).attr('data-resourceid');
-      $(this).addClass('liked');
-      // console.log(resourceid);
+      console.log(resourceid);
+
+
     $.ajax({
       url: '/api/likebutton/' + resourceid,
       method: 'POST',
       success: function(results) {
-        console.log(resourceid, 'likes come back');
         $(".likeicon").filter('[data-resourceid="resourceid"]').css({'background-color':"red"});
-        
+
       }
-    })
     });
-  }
+  });
+  };
 
   function addTags() {
     $.ajax({
       url: '/api/getTags/',
-      method: 'GET', 
+      method: 'GET',
       success: function(results) {
-        console.log(results);
+        // console.log(results);
         results.forEach((item) => {
-          $('<td class="thetags" style="padding-right:5px;font-size:30px">').text(item.tags).appendTo($('.tagsSpan'));
+          $('<td class="thetags" style="padding-right:1.5em;font-size:40px ">').text(" #" + item.tags).appendTo($('.tagsSpan'));
         })
       }
     })
   }
 
+function createCommentElement(comments) {
+
+    const html = `
+        <article class="commentBlock">
+          <div class="userNameComment">${comments.username}</div>
+          <div class="userComment">${comments.comment}</div>
+        </article>
+      `;
+    return $(html);
+  }
 
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
-       <article class="thumbnail" data="resource-${resource.id}">
+          <article class="article thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
@@ -87,38 +101,47 @@ $(document).ready(function() {
             <div class = "footer">
               <p>${escape(resource.tags)}</p>
               <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}" name="${resource.id}">
+              <p class="thetags">#${escape(resource.tags)}</p>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
                 <div class="dropdown-menu comment-post">
-                  <form action="/api/comments" method="POST" data-resourceid="${resource.id}">
-                    <textarea name="text" placeholder="What do you think?"></textarea>
+                  <form class="postComment" action="/api/comments" method="POST" data-resourceid="${resource.id}">
+                    <textarea class="commentTextArea" name="text" placeholder="What do you think?"></textarea>
                     <input type="Submit" name="${resource.id}">
                   </form>
                 </div>
               </li>
               <li class="dropdown">
-                <a href="#"  class="dropdown-toggle btn btn-default comment"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-resourceid="${resource.id}">View comments<span class="caret"></span></a>
+                <a  class="dropdown-toggle btn btn-default comment"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-resourceid="${resource.id}">View comments<span class="caret"></span></a>
                 <ul class="dropdown-menu comment-view">
                 </ul>
               </li>
-            </article>
+                <span class="like-content">
+                  <button class="btn-secondary like-review" data-resourceid="${resource.id}">
+                    <i class="fa fa-heart" aria-hidden="true"></i> Like
+                  </button>
+                </span>
+            </div>
+          </article>
       `;
     return $(html);
   }
 
   // Renders the tweets via loop and adds them to the top of the page
   function renderResources (data) {
+
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
     // console.log(data);
 
     data.forEach(function(item) {
-      // console.log(item);
-      resourceContainer.prepend(createResourceElement(item));
-    })
+      console.log(item);
+
+       resourceContainer.prepend(createResourceElement(item));
+  })
+}
 
 
-  }
 
 
 

@@ -1,6 +1,6 @@
 
 .navbar {
-  z-index: 1;
+  z-index: 1000000000000000000000000;
   top: 0;
   position: fixed;
   height: 8em;
@@ -12,13 +12,8 @@
   padding-bottom: 0px;
   padding-top: 0.8em;
 
-  .container-fluid {
-
-
-  }
-
- .branding{
-
+  .btn{
+    padding: 0.5em;
   }
 
    h1{
@@ -32,6 +27,7 @@
   }
 
   .form-control{
+    margin-bottom: 1em;
     width: 40em;
   }
 
