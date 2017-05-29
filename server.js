@@ -57,14 +57,42 @@ app.use("/api/profiles", profilesRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  knex('users').select("*").
-  then(function(results) {
-    res.render("index");
+  let userData = false; 
+  knex('users').select("*").then((results) => {
+    // console.log(req.session.userid);
+    results.some(function(item) {
+      // console.log(item.id);
+      if (item.id === req.session.userid) {
+        userData = item; 
+        return true;
+      } else {
+        // console.log('this ran');
+        
+      }
+    })
+    console.log(userData, 'userdata');
+    res.render("index", {userData: userData})
   })
+  
 });
 
 app.get("/profile", (req, res) =>{
-  res.render("profile");
+  let userData = {}; 
+  knex('users').select("*").then((results) => {
+    // console.log(req.session.userid);
+    results.some(function(item) {
+      // console.log(item.id);
+      if (item.id === req.session.userid) {
+        userData = item; 
+        return true;
+      } else {
+        // console.log('this ran');
+        userData = 'noUser';
+      }
+    })
+    // console.log(JSON.stringify(userData));
+    res.render("profile", {userData: userData})
+  })
 })
 
 app.post("/logout", (req, res) => {

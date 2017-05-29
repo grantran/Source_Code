@@ -39,9 +39,9 @@ $(document).ready(function() {
 
   function likesPost() {
     $(".resourceWall").on('click', ".likeicon", function(event) {
-      console.log(event);
+      // console.log(event);
       var resourceid = $(this).attr('data-resourceid');
-      console.log(resourceid);
+      // console.log(resourceid);
     $.ajax({
       url: '/api/likebutton/' + resourceid,
       method: 'POST',
@@ -90,29 +90,24 @@ $(document).ready(function() {
   function renderResources (data) {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
+    // console.log(data, 'to be rendered');
 
     data.forEach(function(item) {
       resourceContainer.prepend(createResourceElement(item));
     })
-
-    // for (var i = 0; i < resources.length; i++) {
-    //   var resource = resources[i];
-    // }
-        // seeds.forEach(function(resource){
-        // resourceContainer.prepend(createResourceElement(resource));
-      // });
      
   }
 
 
 
   // loads the tweets via ajax on success calls on the renderTweets function
-  function loadResources() {
+  function loadYourResources() {
     $.ajax({
       url: '/api/profiles',
       method: 'GET',
       success: function(data) {
         // console.log(data);
+        // console.log(data, 'the data to render');
         renderResources(data);
         getComments();
         likesPost();
@@ -120,7 +115,7 @@ $(document).ready(function() {
     });
   }
 
-  loadResources();
+  loadYourResources();
   // renderResources();
 
 });

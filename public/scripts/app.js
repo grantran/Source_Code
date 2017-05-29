@@ -43,9 +43,9 @@ $(document).ready(function() {
 
   function likesPost() {
     $(".resourceWall").on('click', ".likeicon", function(event) {
-      console.log(event);
+      // console.log(event);
       var resourceid = $(this).attr('data-resourceid');
-      console.log(resourceid);
+      // console.log(resourceid);
     $.ajax({
       url: '/api/likebutton/' + resourceid,
       method: 'POST',
@@ -67,9 +67,9 @@ $(document).ready(function() {
               <p>${escape(resource.description)}</p>
               <p> Posted by ${resource.username}</p>
             </div>
-            <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.imageURL}"></a>
+            <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.image}"></a>
             <div class = "footer">
-              <p>TAG, TAG, TAG</p>
+              <p>${escape(resource.tags)}</p>
               <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
@@ -95,11 +95,9 @@ $(document).ready(function() {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
 
-
-
     data.forEach(function(item) {
-      console.log(item);
-      resourceContainer.prepend(createResourceElement(item));
+      // console.log(item);
+      resourceContainer.append(createResourceElement(item));
     })
 
     // for (var i = 0; i < resources.length; i++) {
@@ -120,7 +118,7 @@ $(document).ready(function() {
       url: '/api/resources',
       method: 'GET',
       success: function(data) {
-        // console.log(data);
+        // console.log(data, 'this comes second');
         renderResources(data);
         getComments();
         likesPost();
