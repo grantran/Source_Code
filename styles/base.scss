@@ -10,6 +10,7 @@ body{
   .tagholder {
     padding-left: 16em;
     padding-bottom: 3em;
+    padding-right: 16em;
     font-size: 15px;
 
 
@@ -23,6 +24,7 @@ body{
 
 .comment-view{
   width: 20em;
+  z-index: 5;
 
   .commentBlock{
     padding: 1em;
@@ -34,6 +36,7 @@ body{
     position:relative;
     z-index: 10000000000;
     border: 1px solid #ddd;
+    z-index: 5;
 
 
  &:hover{
