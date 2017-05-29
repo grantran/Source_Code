@@ -8,12 +8,12 @@ module.exports = (knex) => {
   router.post("/", (req, res) => {
     // console.log(req);
     knex('comments').insert({
-      comment: req.body.text, 
+      comment: req.body.text,
       user_id: req.session.userid,
       resource_id: Object.keys(req.body)[0]
     }).then(() => {
-      // res.redirect("/");
-      res.end();
+      res.redirect("/");
+      // res.end();
     });
   });
 

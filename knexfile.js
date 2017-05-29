@@ -1,7 +1,5 @@
 require('dotenv').config();
-
 module.exports = {
-
   development: {
     client: 'postgresql',
     connection: {
@@ -20,7 +18,6 @@ module.exports = {
       directory: './db/seeds'
     }
   },
-
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL + '?ssl=true',
@@ -32,5 +29,4 @@ module.exports = {
       tableName: 'migrations'
     }
   }
-
 };

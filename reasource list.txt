@@ -1,0 +1,79 @@
+
+
+
+
+
+1.
+
+Complete CSS Cheat Sheet (with new CSS3 tags)
+
+What makes a website unique is its styling. CSS is a must have skill for every web developer. Using CSS day-to-day? Whether you're super savvy web developer or just someone who wants to learn web development, this CSS cheat sheet should help you out.
+
+
+https://websitesetup.org/css3-cheat-sheet/
+
+CSS
+
+http://www.cssauthor.com/wp-content/uploads/2015/07/Most-Practical-CSS-Cheat-Sheet.jpg
+
+2.
+
+What are Databases?
+
+In this lesson, we'll be looking at databases, which are computer mechanisms for storing and retrieving data.
+
+http://study.com/academy/lesson/what-are-databases-examples-types-quiz.html
+
+Database
+
+http://study.com/images/StudyCom-og-Facebook-Logo.jpg
+
+3.
+
+jQuery Tutorial
+
+Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, PHP, and XML.
+
+https://www.w3schools.com/jquery/default.asp
+
+jQuery
+
+https://camo.githubusercontent.com/02ed3f6695f288aedec24c2a329c667281efef5f/687474703a2f2f707265636973696f6e2d736f6674776172652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f30342f6a5175726572792e676966
+
+4.
+
+Bootstrap Themes
+
+Official Bootstrap Themes and templates from the creators of Bootstrap including dashboards, admins, and marketing sites.
+
+https://themes.getbootstrap.com/
+
+Bootstrap
+
+https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-social.png
+
+5.
+Learn Sass In 15 Minutes | Tutorialzine
+
+A short lesson, where we look at the popular CSS pre-processors Sass. This tutorial will get you familiar with all the basic features you need to know in order to write neat and easy to maintain stylesheets.
+
+http://tutorialzine.com/2016/01/learn-sass-in-15-minutes/
+
+Sass
+
+http://cdn.tutorialzine.com/wp-content/uploads/2016/01/learn-sass-in-15-minutes.jpg
+
+6.
+
+MockFlow - Online Wireframe and UX Tools
+
+MockFlow is an online wireframe tool for software and websites
+
+https://mockflow.com/
+
+Wireframe
+
+http://www.prototypingtool.com/wp-content/uploads/2010/08/Mockflow_NEW.jpg
+
+
+
