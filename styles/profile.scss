@@ -1,0 +1,31 @@
+
+body{
+
+.article{
+  display:block;
+  margin: 0 0 30px 0;
+
+  padding:12px;
+  background:white;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 0px rgba(black,0.05);
+  transition:all 220ms;
+
+  &:hover{
+    box-shadow: 0px 2px 3px 1px rgba(black,0.1);
+    transform : translateY(-5px);
+    transition:all 220ms;
+  }
+
+  .thetags:hover{
+    color: blue;
+    }
+
+  }
+
+  .username{
+    padding-bottom:1em;
+    padding-left: 4.5em;
+    font-size: 3.5em;
+}
+}
