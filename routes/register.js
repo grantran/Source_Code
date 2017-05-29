@@ -4,7 +4,6 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
-
  router.post('/', (req, res) => {
   let validUsername = req.body;
     knex('users')
@@ -13,8 +12,8 @@ module.exports = (knex) => {
           req.session.userid = results[0];
           res.redirect("/");
       })
-
   });
+
  return router;
 }
 

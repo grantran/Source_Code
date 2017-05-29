@@ -18,7 +18,6 @@ $(document).ready(function() {
         $('.comment-view').empty();
         results.forEach((item) => {
           commentContainer.prepend(createCommentElement(item));
-          // $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
         });
       }
     })
@@ -28,6 +27,7 @@ $(document).ready(function() {
   function postComments() {
     $(".resourceWall").on('click', ".comment-post", function(event) {
       var resourceid = $(this).attr('data-resourceid');
+
     $.ajax({
       url: '/api/comments',
       method: 'POST',
@@ -43,10 +43,7 @@ $(document).ready(function() {
   $(".resourceWall").on('click', '.like-review', function(event) {
     $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
     $(this).children('.fa-heart').addClass('animate-like');
-
-      var resourceid = $(this).attr('data-resourceid');
-
-      console.log(resourceid);
+    var resourceid = $(this).attr('data-resourceid');
 
     $.ajax({
       url: '/api/likebutton/' + resourceid,
@@ -68,15 +65,15 @@ $(document).ready(function() {
     return $(html);
   }
 
-    function ran_col(id) { //function name
-      var color = '#'; // hexadecimal starting symbol
-      var letters = ['B3CC57','ECF081','FFBE40','EF746F','AB3E5B','E2FF9E','2C9FA3','C0C0C0', 'F45D4C']; //Set your colors here
-      color += letters[Math.floor(Math.random() * letters.length)];
-      
-      var thumbs = document.getElementById(id); // Setting the random color on your div element.
-      console.log(thumbs);
-      thumbs.style.border = '3px solid ' + color;
-    }
+  function ran_col(id) { 
+    var color = '#'; 
+    var letters = ['B3CC57','ECF081','FFBE40','EF746F','AB3E5B','E2FF9E','2C9FA3','C0C0C0', 'F45D4C']; //Set your colors here
+    color += letters[Math.floor(Math.random() * letters.length)];
+    
+    var thumbs = document.getElementById(id); 
+    
+    thumbs.style.border = '3px solid ' + color;
+  }
 
 
   // creates elements on the page for each tweet
@@ -120,8 +117,6 @@ $(document).ready(function() {
           </article>
             </div>
             </article>
-            
-
       `;
     return $(html);
   }
@@ -137,25 +132,19 @@ $(document).ready(function() {
 
   }
 
-
-
   // loads the tweets via ajax on success calls on the renderTweets function
   function loadYourResources() {
     $.ajax({
       url: '/api/profiles',
       method: 'GET',
       success: function(data) {
-        console.log(data, "user specific data");
-        // console.log(data, 'the data to render');
         renderResources(data);
         getComments();
         likesPost();
-
       }
     });
   }
-  loadYourResources();
-  // renderResources();
 
+  loadYourResources();
 });
 

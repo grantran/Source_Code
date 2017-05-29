@@ -3,4 +3,6 @@ public/styles
 .env
 *.log
 *.sqlite3
-.DS_store
+.DS_Store
+
+//DS_Store was not capped and is now in our project!! delete it out!!!

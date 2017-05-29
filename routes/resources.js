@@ -4,9 +4,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
-
   router.post("/", (req, res) => {
-    // console.log(req.body);
     knex('resources').insert({
       title: req.body.title,
       url: req.body.url,
@@ -24,7 +22,6 @@ module.exports = (knex) => {
     knex('resources').select(['resources.id', 'resources.title', 'resources.url', 'resources.user_id', 'resources.description', 'resources.tags', 'resources.image', 'users.username'])
     .leftJoin('users', 'resources.user_id', 'users.id')
     .then(function(results) {
-      // console.log(results);
       res.json(results);
     });
   });
