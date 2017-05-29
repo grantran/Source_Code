@@ -56,6 +56,19 @@ $(document).ready(function() {
     });
   }
 
+  function addTags() {
+    $.ajax({
+      url: '/api/getTags/',
+      method: 'GET', 
+      success: function(results) {
+        console.log(results);
+        results.forEach((item) => {
+          $('<td style="padding-right:5px;font-size:30px">').text(item.tags).appendTo($('.tagsSpan'));
+        })
+      }
+    })
+  }
+
 
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
@@ -94,6 +107,7 @@ $(document).ready(function() {
   function renderResources (data) {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
+    // console.log(data);
 
     data.forEach(function(item) {
       // console.log(item);
@@ -122,6 +136,7 @@ $(document).ready(function() {
         renderResources(data);
         getComments();
         likesPost();
+        addTags();
       }
     });
   }

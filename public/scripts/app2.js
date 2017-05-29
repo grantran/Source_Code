@@ -71,19 +71,15 @@ $(document).ready(function() {
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
-
-    <br></br>
-    <br></br>
-    <br></br>
        <article class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
               <p> Posted by ${resource.username}</p>
             </div>
-            <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.imageURL}"></a>
+            <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.image}"></a>
             <div class = "footer">
-              <p>TAG, TAG, TAG</p>
+              <p>${escape(resource.tags)}</p>
               <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>

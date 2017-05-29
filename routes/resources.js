@@ -21,9 +21,10 @@ module.exports = (knex) => {
   });
 
   router.get("/", (req, res) => {
-    knex('resources').select("*")
+    knex('resources').select(['resources.id', 'resources.title', 'resources.url', 'resources.user_id', 'resources.description', 'resources.tags', 'resources.image', 'users.username'])
     .leftJoin('users', 'resources.user_id', 'users.id')
     .then(function(results) {
+      // console.log(results);
       res.json(results);
     });
   });

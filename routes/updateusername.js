@@ -12,7 +12,7 @@ module.exports = (knex) => {
     .update({
       username: req.body.text
     }).then(() => {
-      res.redirect("/");
+      res.send("hey");
     });
   });
 
