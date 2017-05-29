@@ -11,8 +11,8 @@ module.exports = (knex) => {
       likes: true,
       user_id: req.session.userid,
       resource_id: req.params.resourceid
-    }).then(() => {
-      res.end();
+    }).then((results) => {
+      res.json(results);
     });
   });
   return router;

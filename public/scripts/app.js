@@ -45,12 +45,15 @@ $(document).ready(function() {
     $(".resourceWall").on('click', ".likeicon", function(event) {
       // console.log(event);
       var resourceid = $(this).attr('data-resourceid');
+      $(this).addClass('liked');
       // console.log(resourceid);
     $.ajax({
       url: '/api/likebutton/' + resourceid,
       method: 'POST',
       success: function(results) {
-        res.end();
+        console.log(resourceid, 'likes come back');
+        $(".likeicon").filter('[data-resourceid="resourceid"]').css({'background-color':"red"});
+        
       }
     })
     });
@@ -83,7 +86,7 @@ $(document).ready(function() {
             <a href="${escape(resource.url)}"><img class="resourceImage" src="${resource.image}"></a>
             <div class = "footer">
               <p>${escape(resource.tags)}</p>
-              <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}">
+              <input type="image" class="likeicon" src="/images/heart.png" data-resourceid="${resource.id}" name="${resource.id}">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post a comment<span class="caret"></span></a>
                 <div class="dropdown-menu comment-post">
