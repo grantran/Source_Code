@@ -2,8 +2,18 @@
 body{
   padding-top: 10em;
 
-  .tagholder {
-    padding-left: 3em;
+  .resourceWall{
+    display:-webkit-box;
+  }
+
+  .thumbnail{
+
+  }
+  .resourceImage{
+    max-width: 100px;
+  }
+  .tagHolder {
+    padding-left: 10em;
     padding-bottom: 1em;
   }
 

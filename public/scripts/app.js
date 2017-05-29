@@ -61,6 +61,9 @@ $(document).ready(function() {
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
+
+
+
        <article class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
@@ -86,20 +89,43 @@ $(document).ready(function() {
                 </ul>
               </li>
             </article>
+      }
       `;
     return $(html);
   }
+
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+
 
   // Renders the tweets via loop and adds them to the top of the page
   function renderResources (data) {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
 
+    let tagsUsed = [];
+    data.forEach(function(item){
+      tagsUsed.push(item.tags);
+        })
+    let uniqueTags = tagsUsed.filter(onlyUnique).toString().replace(/,/g , "");
+      for (var c in uniqueTags) {
+        $('<a href="www.google.com">').text("   #" + uniqueTags[c]).appendTo('.tagLinks');
+        console.log(uniqueTags[c])
+      }
 
 
-    data.forEach(function(item) {
-      console.log(item);
-      resourceContainer.append(createResourceElement(item));
+
+    data.some(function(item) {
+      console.log("item", item)
+      if(item.id % 3 === 0){
+            console.log("aaaaaaaaaaaaaargh")
+
+      $('<div class="newResourceWall row">').text(resourceContainer).appendTo('.newResourceWall')
+    }else{
+     console.log(item.id);
+      resourceContainer.prepend(createResourceElement(item));
+    }
     })
 
     // for (var i = 0; i < resources.length; i++) {
