@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
   var resourceContainer = $('#resources');
 
@@ -87,11 +85,26 @@ function createCommentElement(comments) {
     return $(html);
   }
 
+    function ran_col(id) { //function name
+      var color = '#'; // hexadecimal starting symbol
+      var letters = ['B3CC57','ECF081','FFBE40','EF746F','AB3E5B','E2FF9E','2C9FA3','C0C0C0', 'F45D4C']; //Set your colors here
+      color += letters[Math.floor(Math.random() * letters.length)];
+      
+      var thumbs = document.getElementById(id); // Setting the random color on your div element.
+      console.log(color);
+      thumbs.style.border = '3px solid ' + color;
+      }
+
+
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
-          <article class="article thumbnail" data="resource-${resource.id}">
+
+       <article class="thumbnail" data="resource-${resource.id}">
+
+       <div class="col-lg-3 col-md-4 thumb">
+       <article class="thumbnail" data="resource-${resource.id}" id=${resource.id}>
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
@@ -123,6 +136,10 @@ function createCommentElement(comments) {
                 </span>
             </div>
           </article>
+          </div>
+            </article>
+            
+
       `;
     return $(html);
   }
@@ -135,11 +152,11 @@ function createCommentElement(comments) {
     // console.log(data);
 
     data.forEach(function(item) {
-      console.log(item);
+      resourceContainer.prepend(createResourceElement(item));
+      ran_col(item.id);
+    })
+  }
 
-       resourceContainer.prepend(createResourceElement(item));
-  })
-}
 
 
 

@@ -17,7 +17,8 @@ $(document).ready(function() {
       success: function(results) {
         $('.comment-view').empty();
         results.forEach((item) => {
-          $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
+          commentContainer.prepend(createCommentElement(item));
+          // $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
         });
       }
     })
@@ -37,19 +38,6 @@ $(document).ready(function() {
     });
   }
 
-  function updateUser() {
-    $(".updateUser").on('click', function(event) {
-      event.preventDefault();
-      // console.log('in ajax');
-    $.ajax({
-      url: '/api/updateuser',
-      method: 'POST',
-      success: function(results) {
-        res.end();
-      }
-    })
-    });
-  }
 
   function likesPost(){
   $(".resourceWall").on('click', '.like-review', function(event) {
@@ -69,12 +57,38 @@ $(document).ready(function() {
   });
   };
 
+  function createCommentElement(comments) {
+
+    const html = `
+        <article class="commentBlock">
+          <div class="userNameComment">${comments.username}</div>
+          <div class="userComment">${comments.comment}</div>
+        </article>
+      `;
+    return $(html);
+  }
+
+    function ran_col(id) { //function name
+      var color = '#'; // hexadecimal starting symbol
+      var letters = ['B3CC57','ECF081','FFBE40','EF746F','AB3E5B','E2FF9E','2C9FA3','C0C0C0', 'F45D4C']; //Set your colors here
+      color += letters[Math.floor(Math.random() * letters.length)];
+      
+      var thumbs = document.getElementById(id); // Setting the random color on your div element.
+      console.log(thumbs);
+      thumbs.style.border = '3px solid ' + color;
+    }
+
 
   // creates elements on the page for each tweet
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
-       <div class="article thumbnail" data="resource-${resource.id}">
+
+       <artcle class="thumbnail" data="resource-${resource.id}">
+
+       <div class="col-lg-3 col-md-4 thumb">
+       <article class="thumbnail" data="resource-${resource.id}" id=${resource.id}>
+
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
@@ -104,6 +118,10 @@ $(document).ready(function() {
                 </span>
             </div>
           </article>
+            </div>
+            </article>
+            
+
       `;
     return $(html);
   }
@@ -114,6 +132,7 @@ $(document).ready(function() {
     resourceContainer.empty();
     data.forEach(function(item) {
       resourceContainer.prepend(createResourceElement(item));
+      ran_col(item.id);
     })
 
   }
@@ -131,13 +150,12 @@ $(document).ready(function() {
         renderResources(data);
         getComments();
         likesPost();
-        updateUser();
+
       }
     });
   }
   loadYourResources();
   // renderResources();
-  updateUser();
 
 });
 

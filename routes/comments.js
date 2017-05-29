@@ -12,7 +12,8 @@ module.exports = (knex) => {
       user_id: req.session.userid,
       resource_id: Object.keys(req.body)[0]
     }).then(() => {
-      res.redirect("/");
+      // res.redirect("/");
+      res.end();
     });
   });
 
