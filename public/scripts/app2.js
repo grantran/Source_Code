@@ -40,7 +40,7 @@ $(document).ready(function() {
   function updateUser() {
     $(".updateUser").on('click', function(event) {
       event.preventDefault();
-      console.log('in ajax');
+      // console.log('in ajax');
     $.ajax({
       url: '/api/updateuser',
       method: 'POST',
@@ -71,7 +71,7 @@ $(document).ready(function() {
   function createResourceElement(resource) {
     let rdi = "${resource.id}";
     const html = `
-       <article class="thumbnail" data="resource-${resource.id}">
+       <div class="thumbnail" data="resource-${resource.id}">
             <div class="caption">
               <h3 href="${escape(resource.url)}">${escape(resource.title)}</h3>
               <p>${escape(resource.description)}</p>
@@ -104,8 +104,6 @@ $(document).ready(function() {
   function renderResources (data) {
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
-    // console.log(data, 'to be rendered');
-
     data.forEach(function(item) {
       resourceContainer.prepend(createResourceElement(item));
     })
@@ -120,7 +118,7 @@ $(document).ready(function() {
       url: '/api/profiles',
       method: 'GET',
       success: function(data) {
-        // console.log(data);
+        console.log(data, "user specific data");
         // console.log(data, 'the data to render');
         renderResources(data);
         getComments();
@@ -129,7 +127,6 @@ $(document).ready(function() {
       }
     });
   }
-
   loadYourResources();
   // renderResources();
   updateUser();

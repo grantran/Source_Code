@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <script defer type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script defer type="text/javascript" src="/scripts/app.js"></script>
+    <script defer type="text/javascript" src="/scripts/app2.js"></script>
     <script defer src="/scripts/embedyoutube.js" type="text/javascript"></script>
 
 
@@ -18,121 +18,11 @@
     <%- include partials/_navbar.ejs %>
 
     <div >
-      <h1 class="username" href=""> <%= userData.username %> </h1>
+      <h1 class="username" href=""> Hello <%= userData.username %> </h1>
       
     </div>
-      <article class="updateUser">
-       <form method="POST" action="/api/updateuser">
-       <textarea name="updateUser"></textarea>
-       <input type="Submit" value="Change">
-       </form>
-      </article>
     
     <div class="container resourceWall">
-      <div class="row">
-         <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>TITLE</h3>
-              <p>Description - blah blah blah</p>
-              <p> Posted by username</p>
-            </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
-            <div class = "footer">
-              <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
-              <div class="dropdown">
-                <a href="#" class="dropdownbtn btn btn-default" role="button">Post a comment</a>
-                <div class="dropdown-content">
-                  <h3> Write a Comment</h3>
-                  <form>
-                    <textarea name="text" placeholder="What do you think?"></textarea>
-                    <input type="Submit">
-                  </form>
-                </div>
-              </div>
-              <a href="#" class="btn btn-default" role="button">View comments</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>TITLE</h3>
-              <p>Description - blah blah blah</p>
-              <p> Posted by username</p>
-            </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
-            <div class = "footer">
-              <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
-              <p><a href="#" class="btn btn-primary" role="button">Post a comment</a> <a href="#" class="btn btn-default" role="button">View comments</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>TITLE</h3>
-              <p>Description - blah blah blah</p>
-              <p> Posted by username</p>
-            </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
-            <div class = "footer">
-              <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
-              <p><a href="#" class="btn btn-primary" role="button">Post a comment</a> <a href="#" class="btn btn-default" role="button">View comments</a></p>
-            </div>
-          </div>
-        </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>TITLE</h3>
-              <p>Description - blah blah blah</p>
-              <p> Posted by username</p>
-            </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
-            <div class = "footer">
-              <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
-              <p><a href="#" class="btn btn-primary" role="button">Post a comment</a> <a href="#" class="btn btn-default" role="button">View comments</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>TITLE</h3>
-              <p>Description - blah blah blah</p>
-              <p> Posted by username</p>
-            </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
-            <div class = "footer">
-              <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
-              <p><a href="#" class="btn btn-primary" role="button">Post a comment</a>
-               <a href="#" class="btn btn-default" role="button">View comments</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-           <div class="thumbnail">
-            <div class="caption">
-              <h3>TITLE</h3>
-              <p>Description - blah blah blah</p>
-              <p> Posted by username</p>
-            </div>
-            <a href="http://placehold.it"><img src="http://placehold.it/350x150"></a>
-            <div class = "footer">
-              <p>TAG, TAG, TAG</p>
-              <img href="" class="likeicon" src="/images/heart.png">
-              <p><a href="#" class="btn btn-primary" role="button">Post a comment</a> <a href="#" class="btn btn-default" role="button">View comments</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
 </html>

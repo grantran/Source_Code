@@ -63,7 +63,7 @@ $(document).ready(function() {
       success: function(results) {
         console.log(results);
         results.forEach((item) => {
-          $('<td style="padding-right:5px;font-size:30px">').text(item.tags).appendTo($('.tagsSpan'));
+          $('<td class="thetags" style="padding-right:5px;font-size:30px">').text(item.tags).appendTo($('.tagsSpan'));
         })
       }
     })
@@ -111,15 +111,8 @@ $(document).ready(function() {
 
     data.forEach(function(item) {
       // console.log(item);
-      resourceContainer.append(createResourceElement(item));
+      resourceContainer.prepend(createResourceElement(item));
     })
-
-    // for (var i = 0; i < resources.length; i++) {
-    //   var resource = resources[i];
-    // }
-        // seeds.forEach(function(resource){
-        // resourceContainer.prepend(createResourceElement(resource));
-      // });
 
 
   }
