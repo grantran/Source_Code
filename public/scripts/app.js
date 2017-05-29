@@ -19,7 +19,6 @@ $(document).ready(function() {
         $('.comment-view').empty();
         results.forEach((item) => {
           commentContainer.prepend(createCommentElement(item));
-          // $('<div>').text(item.username + ': ' + item.comment).appendTo($('.comment-view'));
         });
       }
     })
@@ -28,9 +27,7 @@ $(document).ready(function() {
 
   function postComments() {
     $(".resourceWall").on('click', ".comment-post", function(event) {
-      // console.log(event);
       var resourceid = $(this).attr('data-resourceid');
-      // console.log($resourceid);
     $.ajax({
       url: '/api/comments',
       method: 'POST',
@@ -45,17 +42,13 @@ function likesPost(){
   $(".resourceWall").on('click', '.like-review', function(event) {
     $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
     $(this).children('.fa-heart').addClass('animate-like');
-
-      var resourceid = $(this).attr('data-resourceid');
-      console.log(resourceid);
-
+    var resourceid = $(this).attr('data-resourceid');
 
     $.ajax({
       url: '/api/likebutton/' + resourceid,
       method: 'POST',
       success: function(results) {
         $(".likeicon").filter('[data-resourceid="resourceid"]').css({'background-color':"red"});
-
       }
     });
   });
@@ -66,7 +59,6 @@ function likesPost(){
       url: '/api/getTags/',
       method: 'GET',
       success: function(results) {
-        // console.log(results);
         results.forEach((item) => {
           $('<td class="thetags" style="padding-right:1.5em;font-size:40px ">').text(" #" + item.tags).appendTo($('.tagsSpan'));
         })
@@ -75,25 +67,24 @@ function likesPost(){
   }
 
 function createCommentElement(comments) {
-
-    const html = `
-        <article class="commentBlock">
-          <div class="userNameComment">${comments.username}</div>
-          <div class="userComment">${comments.comment}</div>
-        </article>
-      `;
-    return $(html);
+  const html = `
+      <article class="commentBlock">
+        <div class="userNameComment">${comments.username}</div>
+        <div class="userComment">${comments.comment}</div>
+      </article>
+    `;
+  return $(html);
   }
 
-    function ran_col(id) { //function name
-      var color = '#'; // hexadecimal starting symbol
-      var letters = ['B3CC57','ECF081','FFBE40','EF746F','AB3E5B','E2FF9E','2C9FA3','C0C0C0', 'F45D4C']; //Set your colors here
-      color += letters[Math.floor(Math.random() * letters.length)];
-      
-      var thumbs = document.getElementById(id); // Setting the random color on your div element.
-      console.log(color);
-      thumbs.style.border = '3px solid ' + color;
-      }
+function ran_col(id) {
+  var color = '#'; 
+  var letters = ['B3CC57','ECF081','FFBE40','EF746F','AB3E5B','E2FF9E','2C9FA3','C0C0C0', 'F45D4C']; 
+  color += letters[Math.floor(Math.random() * letters.length)];
+  
+  var thumbs = document.getElementById(id); 
+  
+  thumbs.style.border = '3px solid ' + color;
+  }
 
 
   // creates elements on the page for each tweet
@@ -137,8 +128,6 @@ function createCommentElement(comments) {
           </article>
           </div>
             </article>
-            
-
       `;
     return $(html);
   }
@@ -148,18 +137,11 @@ function createCommentElement(comments) {
 
     var resourceContainer = $(".resourceWall");
     resourceContainer.empty();
-    // console.log(data);
-
     data.forEach(function(item) {
       resourceContainer.prepend(createResourceElement(item));
       ran_col(item.id);
     })
   }
-
-
-
-
-
 
   // loads the tweets via ajax on success calls on the renderTweets function
   function loadResources() {
@@ -167,7 +149,6 @@ function createCommentElement(comments) {
       url: '/api/resources',
       method: 'GET',
       success: function(data) {
-        // console.log(data, 'this comes second');
         renderResources(data);
         getComments();
         likesPost();
@@ -189,7 +170,6 @@ function createCommentElement(comments) {
   }
 
   loadResources();
-  // renderResources();
 
 });
 
