@@ -1,0 +1,35 @@
+To fix/to do:
+
+Known bugs:
+-likes table should be a joiner table -delete boolean column + dates
+-get ride of the double left join of resource table to likes table
+-some CSS layering issues (due to bootstrap?)
+-make better comments feature? drop down is a little flimsy
+- fix grid so that the resources render in a more ordered way
+- fix tag header so that the tags go onto a new line
+-fix like button so it doesn't float down off resource when clicked
+- delete repeat tag element on resource
+-fix the prepend, append issue with resources
+-delete .DS_store from github
+-refactor + modulize function that are in both app + app2
+
+Features to implement:
+-put liked resources in user profile
+-delete resource function (by user only)
+-proper register/login
+-add flash error messages
+-add flash message for when resource is submitted
+-sort resources by clicking tag headers
+-sort resources by date
+-sort resources by likes
+-sort resources by type(video, cheat sheet, article, code snippet etc)
+-add like counter
+-make a search bar for site
+-use OG meta tags to populate title, description + image of resource
+-make it so you can add multiple tags
+- have user profile images
+- be able to update user image/name
+- add user image to comment posts
+- add timestamps to resources + comments
+-add online learning widgets(?) like code academy courses, khan academy etc to profile page
+-impliment youtube enbed
