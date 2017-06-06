@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       table.string('title').notNull();
       table.string('url').notNull();
       table.string('description');
-      table.string('image');
+      table.text('image');
       table.string('tags');
       table.integer('user_id');
       table.timestamps(true, true);

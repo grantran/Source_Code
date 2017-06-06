@@ -7810,6 +7810,10 @@ body .dropdown:hover .dropdown-content {
   display: block;
 }
 
+body .dropdown-toggle {
+  color: black;
+}
+
 body .likeicon {
   float: right;
   max-width: 1.5em;
@@ -7888,13 +7892,13 @@ body .comment-box {
 }
 
 .navbar {
-  z-index: 1000000000000000000000000;
+  z-index: 1000;
   top: 0;
   position: fixed;
   height: 8em;
   width: 100%;
-  background-color: #000000;
-  color: #e8fdff;
+  background: linear-gradient(#69D2E7, #A7DBD8, #3FB8AF);
+  color: black;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0px;
@@ -7909,6 +7913,11 @@ body .comment-box {
   padding-top: 3em;
   padding-left: 0.5em;
   display: inline;
+  color: black;
+}
+
+.navbar .caret {
+  color: black;
 }
 
 .navbar .navbar-form {
