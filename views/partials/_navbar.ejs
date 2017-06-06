@@ -1,91 +1,86 @@
 <!DOCTYPE html>
-<html>
-<head>
+  <html>
+    <head>
+    </head>
+    <body>
+      <header>
+        <nav class="navbar">
+          <div class="container-fluid">
+            <a href="../">
+              <span class="branding">
+                <img  class= "brand-logo" src="/images/laptop-icon.png">
+                <h1 id="sitename"> Source Code </h1>
+              </span>
+            </a>
 
-</head>
-  <body>
-    <header>
-      <nav class="navbar" style"z-index=1000000000">
-       <div class="container-fluid">
-
-       <a href="../">
-        <span class="branding">
-          <img  class= "brand-logo" src="/images/laptop-icon.png">
-          <h1 id="sitename"> Source Code </h1>
-        </span>
-        </a>
-        <span>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             <img href="" class ="addresource" src="/images/plus.png">
-             <span class="caret"></span></a>
-              <% if (userData === false ) { %>
-                <ul class="dropdown-menu" style="color:black">
-                <span> Please login to post a resource   </span>
-                </ul>
-              <% } else { %>
-              <ul class="dropdown-menu">
-              <form action="/api/resources" method="POST">
-                <h3>Create a Resource</h3>
-                <input type="text" class="form-control" name="title" placeholder="Enter title" style="width:40em">
-                <input type="text" class="form-control" name="description" placeholder="Enter description" style="width:40em">
-                <input type="text" class="form-control" name="tags" placeholder="Enter tags" style="width:40em">
-                <input type="text" class="form-control" name = "url" placeholder="Enter URL" style="width:40em">
-                <input type="text" class="form-control" name = "image" placeholder="Enter image URL" style="width:40em">
-                <button type="submit" class="btn btn-default">Submit</button>
-                <button type="cancel" class="btn btn-default">Cancel</button>
-              </form>
-              </ul>
-              <% } %>
-          </li>
-        </span>
-        <form class="navbar-form" role="search">
-          <span class="form-group">
-            <input type="text" class="form-control" style="margin-bottom:0em; width:40em" placeholder="Search">
-          </span>
-          <button type="submit"  class="btn btn-default">Submit</button>
-        </form>
-
-        <span  class="profilelink">
-         <% if (userData === false ) { %>
-
-         <% } else { %>
-        <a href="../profile">
-         <% } %>
-          <img  id="profilePic" src="/images/profile.png">
-          </a>
-        </span>
-        <div>
-
-
-          <% if (userData === false ) { %>
-            <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-
-
-            <form style="color:black" action="/login" method="post">
-              <input value="" class="form-control" type="username" name="username" placeholder="Enter your username here">
-              <button type="submit" class="btn btn-default">Login</button>
-            </form>
-          </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-
-              <form action="/register" method="POST">
-                <input type="text"  name="username" class="form-control" placeholder="Enter a username here">
-                <button type="submit" class="btn btn-default">Register</button>
-              </form>
-            </ul>
-          </li>
-          <% } else { %>
-            <span>Logged in as <%= userData.username %> <form style="color:black; display: inline; " method="POST" action="/logout"> <input class="logoutbtn btn-xs" style="border-radius: 0px " type="submit" value="LOGOUT" ></span>
-           <% } %>
-        </div>
-       </div>
-      </nav>
-    </header>
-  </body>
-</html>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <img class ="addresource" src="/images/plus.png">
+                  </img>
+                </a>
+                <span class="caret">
+                </span>
+                  <% if (userData === false ) { %>
+                    <ul class="dropdown-menu" style="color:black">
+                      <span> Please login to post a resource </span>
+                    </ul>
+                  <% } else { %>
+                    <ul class="dropdown-menu">
+                      <form action="/api/resources" method="POST">
+                        <h3>Create a Resource</h3>
+                        <input type="text" class="form-control" name="title" placeholder="Enter title" style="width:40em">
+                        <input type="text" class="form-control" name="description" placeholder="Enter description" style="width:40em">
+                        <input type="text" class="form-control" name="tags" placeholder="Enter tags" style="width:40em">
+                        <input type="text" class="form-control" name = "url" placeholder="Enter URL" style="width:40em">
+                        <input type="text" class="form-control" name = "image" placeholder="Enter image URL" style="width:40em">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="cancel" class="btn btn-default">Cancel</button>
+                      </form>
+                    </ul>
+                  <% } %>
+                </li>
+                <form class="navbar-form" role="search">
+                  <span class="form-group">
+                    <input type="text" class="form-control" style="margin-bottom:0em; width:40em" placeholder="Search">
+                  </span>
+                  <button type="submit"  class="btn btn-default">Submit</button>
+                </form>
+                <span  class="profilelink">
+                  <% if (userData === false ) { %>
+                  <% } else { %>
+                    <a href="../profile">
+                  <% } %>
+                    <img  id="profilePic" src="/images/profile.png">
+                    </a>
+                </span>
+                <div>
+                  <% if (userData === false ) { %>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <form style="color:black" action="/login" method="post">
+                          <input value="" class="form-control" type="username" name="username" placeholder="Enter your username here">
+                          <button type="submit" class="btn btn-default">Login</button>
+                        </form>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                    <form action="/register" method="POST">
+                      <input type="text"  name="username" class="form-control" placeholder="Enter a username here">
+                      <button type="submit" class="btn btn-default">Register</button>
+                    </form>
+                  </ul>
+                </li>
+                <% } else { %>
+                  <span>Logged in as <%= userData.username %> <form style="color:black; display: inline; " method="POST" action="/logout"> <input class="logoutbtn btn-xs" style="border-radius: 0px " type="submit" value="LOGOUT" ></span>
+                <% } %>
+              </div>
+             </div>
+            </nav>
+          </header>
+        </body>
+      </html>

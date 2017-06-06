@@ -1,5 +1,9 @@
 "use strict";
 
+ //likes should be the joinging table - not joined onto resources
+ //also toggle likes to noit be clickable multiple times
+
+
 const express = require('express');
 const router  = express.Router();
 
